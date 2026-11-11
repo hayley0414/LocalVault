@@ -1,0 +1,8 @@
+# LocalVault 依赖清单（全部免费、开源）
+# 安装命令：pip install -r requirements.txt
+
+# GUI 框架（开源，LGPL）
+PyQt6>=6.4.0
+
+# 加密库（开源，Apache-2.0 / BSD）：提供 PBKDF2 与 AES-GCM 的可靠实现
+cryptography>=42.0.0
