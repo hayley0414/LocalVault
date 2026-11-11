@@ -14,7 +14,8 @@ main.py —— 程序入口
 import os
 import sys
 
-from PyQt6.QtWidgets import QApplication, QMessageBox, QIcon
+from PyQt6.QtWidgets import QApplication, QMessageBox
+from PyQt6.QtGui import QIcon
 
 from styles import DARK_STYLE
 
