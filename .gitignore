@@ -12,9 +12,10 @@ backups/
 .localvault/
 
 # ---- 打包产物（PyInstaller）----
+# 注意：build.spec 是构建配置、属于源码，故意不在此排除，需要提交。
+# 只排除 PyInstaller 生成的目录与文件：
 dist/
 build/
-*.spec
 __pycache__/
 *.pyc
 *.pyo
