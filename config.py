@@ -29,7 +29,8 @@ def settings_path() -> str:
 
 # 行为默认值
 DEFAULT_AUTOLOCK_SECONDS = 300      # 闲置 5 分钟自动锁定
-CLIPBOARD_CLEAR_SECONDS = 10        # 复制密码后 10 秒清空剪贴板
+# 复制密码后自动清空剪贴板的秒数；设为 0 表示【永不自动清空】（由用户手动清除）。
+CLIPBOARD_CLEAR_SECONDS = 0
 MIN_MASTER_PASSWORD_LEN = 8         # 主密码最短长度（创建时强制）
 
 # 填充快捷键：Ctrl + Alt + F（通过 Windows RegisterHotKey 注册，非全局钩子）

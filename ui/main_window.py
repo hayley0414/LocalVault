@@ -27,7 +27,7 @@ from PyQt6.QtCore import Qt, QTimer, pyqtSignal
 from models import Entry
 from vault_db import Vault, WrongPassword, VaultError
 from config import (
-    BACKUP_DIRNAME, CLIPBOARD_CLEAR_SECONDS, HOTKEY_MODIFIERS, HOTKEY_VK,
+    BACKUP_DIRNAME, HOTKEY_MODIFIERS, HOTKEY_VK,
     load_settings, save_settings, DEFAULT_DATA_DIR,
 )
 from clipboard_manager import ClipboardManager
@@ -153,8 +153,7 @@ class MainWindow(QMainWindow):
 
         # ===== 状态栏 =====
         self.statusBar().showMessage(
-            "复制密码后 %d 秒自动清空剪贴板 ｜ 填充热键 Ctrl+Alt+F（先点目标输入框）"
-            % CLIPBOARD_CLEAR_SECONDS
+            "复制内容会保留在剪贴板（不会自动清空，请用完手动清除）｜ 填充热键 Ctrl+Alt+F（先点目标输入框）"
         )
 
         # ===== 信号连接 =====
@@ -343,7 +342,7 @@ class MainWindow(QMainWindow):
             QMessageBox.information(self, "提示", "该字段为空。")
             return
         self.clipboard.copy(val)
-        self.statusBar().showMessage("已复制，%d 秒后自动清空剪贴板。" % CLIPBOARD_CLEAR_SECONDS)
+        self.statusBar().showMessage("已复制到剪贴板（不会自动清空，请用完手动清除）。")
 
     def _copy_custom(self):
         if not self.selected_entry or not self.selected_entry.custom:
@@ -354,7 +353,7 @@ class MainWindow(QMainWindow):
         if not val:
             return
         self.clipboard.copy(val)
-        self.statusBar().showMessage("已复制「%s」，%d 秒后自动清空。" % (key, CLIPBOARD_CLEAR_SECONDS))
+        self.statusBar().showMessage("已复制「%s」到剪贴板（不会自动清空，请用完手动清除）。" % key)
 
     # ------------------------------------------------------------------ #
     # 填充（快捷键 / 按钮）

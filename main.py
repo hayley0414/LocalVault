@@ -29,7 +29,7 @@ def resource_path(rel: str) -> str:
     return os.path.join(base, rel)
 from config import (
     default_vault_path, DEFAULT_DATA_DIR, load_settings,
-    HOTKEY_MODIFIERS, HOTKEY_VK,
+    HOTKEY_MODIFIERS, HOTKEY_VK, CLIPBOARD_CLEAR_SECONDS,
 )
 from vault_db import Vault
 from clipboard_manager import ClipboardManager
@@ -71,7 +71,7 @@ def main():
     vault = run_login_loop(vault_path)
 
     # ---- 剪贴板安全管理（复制密码 10 秒后自动清空）----
-    clipboard = ClipboardManager(clear_seconds=10, parent=app)
+    clipboard = ClipboardManager(clear_seconds=CLIPBOARD_CLEAR_SECONDS, parent=app)
 
     # ---- 主窗口 ----
     window = MainWindow(vault, clipboard)
